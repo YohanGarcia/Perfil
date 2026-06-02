@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yohan Daniel García — CV (PDF)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --serif:"IBM Plex Serif",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",monospace;
+    --ink:#16181C; --dim:#4b4d54; --faint:#797a80;
+    --accent:#936D0C; --line:#e4e4e3; --panel:#f6f6f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#d9d7d1;font-family:var(--sans);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:var(--mono);}
+
+  /* Screen toolbar */
+  .toolbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    background:#15171D;color:#fff;padding:12px 22px;font-family:var(--mono);font-size:13px;}
+  .toolbar b{color:#E8954A;font-weight:600;}
+  .toolbar button{font-family:var(--mono);font-size:12.5px;font-weight:600;background:#E8954A;color:#15171D;border:none;
+    padding:9px 18px;border-radius:8px;cursor:pointer;transition:opacity .2s;}
+  .toolbar button:hover{opacity:.9;}
+
+  /* Page */
+  .page{width:210mm;min-height:297mm;margin:22px auto;background:#fff;padding:14mm 14mm 12mm;
+    box-shadow:0 16px 50px rgba(0,0,0,.22);}
+
+  /* Header */
+  header{display:flex;gap:18px;align-items:center;padding-bottom:14px;border-bottom:2px solid var(--ink);}
+  header img{width:74px;height:74px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--ink);}
+  .h-id{display:flex;flex-direction:column;justify-content:center;min-width:0;}
+  .h-name{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.12;letter-spacing:-.02em;white-space:nowrap;}
+  .h-role{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.05em;margin-top:5px;text-transform:uppercase;}
+  .h-contact{margin-left:auto;text-align:right;font-family:var(--mono);font-size:10.5px;color:var(--dim);line-height:1.7;}
+  .h-contact a{color:var(--dim);text-decoration:none;}
+  .h-contact .k{color:var(--accent);}
+
+  /* Body grid */
+  .grid{display:grid;grid-template-columns:62mm 1fr;gap:11mm;margin-top:14px;}
+  .side > section, .main > section{margin-bottom:15px;}
+  h2.sec{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+    padding-bottom:5px;margin-bottom:9px;border-bottom:1px solid var(--line);break-after:avoid;}
+  .side > section, .main > section{break-inside:avoid;}
+  .job, .proj, .client{break-inside:avoid;}
+
+  /* Perfil */
+  .perfil{font-size:11px;color:var(--dim);}
+  .perfil b{color:var(--ink);font-weight:600;}
+
+  /* Experiencia */
+  .job{margin-bottom:12px;}
+  .job-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .job-role{font-family:var(--serif);font-size:14.5px;font-weight:600;white-space:nowrap;}
+  .job-when{font-family:var(--mono);font-size:9.5px;color:var(--accent);white-space:nowrap;}
+  .job-co{font-family:var(--mono);font-size:10px;color:var(--faint);margin:1px 0 5px;}
+  ul.b{list-style:none;}
+  ul.b li{position:relative;padding-left:13px;font-size:10.5px;color:var(--dim);margin-bottom:2.5px;}
+  ul.b li::before{content:"";position:absolute;left:1px;top:6px;width:4px;height:4px;border-radius:50%;background:var(--accent);}
+  .client{font-size:10px;color:var(--dim);margin-top:5px;background:var(--panel);border-left:2px solid var(--accent);padding:6px 9px;}
+  .client b{color:var(--ink);}
+
+  /* Proyectos */
+  .proj{margin-bottom:10px;padding-bottom:9px;border-bottom:1px dotted var(--line);}
+  .proj:last-child{border-bottom:none;}
+  .proj-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .proj-name{font-family:var(--serif);font-size:14px;font-weight:600;white-space:nowrap;}
+  .proj-kind{font-family:var(--mono);font-size:9px;color:var(--accent);}
+  .proj-d{font-size:10.5px;color:var(--dim);margin:3px 0 5px;}
+  .proj-stack{font-family:var(--mono);font-size:9px;color:var(--faint);}
+
+  /* Side: skills */
+  .sk + .sk{margin-top:8px;}
+  .sk-h{font-family:var(--mono);font-size:9.5px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:.03em;}
+  .chips{display:flex;flex-wrap:wrap;gap:4px;}
+  .chip{font-family:var(--mono);font-size:9px;color:var(--dim);border:1px solid var(--line);border-radius:5px;padding:2.5px 7px;background:var(--panel);}
+  .learn .chip{border-style:dashed;color:var(--faint);}
+
+  /* lang + edu */
+  .lang{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:3px 0;}
+  .lang .lv{font-family:var(--mono);font-size:9.5px;color:var(--accent);}
+  .edu{font-size:10.5px;color:var(--dim);}
+  .edu + .edu{margin-top:6px;}
+
+  @media print{
+    body{background:#fff;}
+    .toolbar{display:none;}
+    .page{width:auto;min-height:auto;margin:0;padding:11mm;box-shadow:none;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>Vista PDF · <b>Cmd/Ctrl + P</b> → Guardar como PDF (A4)</span>
+    <button onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+  <div class="page">
+    <header>
+      <img src="assets/yohan.jpg" alt="Yohan García">
+      <div class="h-id">
+        <div class="h-name">Yohan Daniel García</div>
+        <div class="h-role">Python · Backend · Full Stack Developer</div>
+      </div>
+      <div class="h-contact">
+        <div><span class="k">◇</span> República Dominicana</div>
+        <div><a href="mailto:yohangarcia056@gmail.com">yohangarcia056@gmail.com</a></div>
+        <div><a href="https://github.com/YOHAN-GARCIA">github.com/YOHAN-GARCIA</a></div>
+        <div><a href="https://www.linkedin.com/in/yohan-garcia-267008258/">linkedin.com/in/yohan-garcia</a></div>
+        <div><a href="https://fact-one.com/">fact-one.com</a></div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- SIDEBAR -->
+      <div class="side">
+        <section>
+          <h2 class="sec">Habilidades técnicas</h2>
+          <div class="sk"><div class="sk-h">Backend</div><div class="chips">
+            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">SQLModel</span><span class="chip">JWT</span><span class="chip">OAuth2</span><span class="chip">WebSockets</span>
+          </div></div>
+          <div class="sk"><div class="sk-h">Frontend</div><div class="chips">
+            <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Zustand</span><span class="chip">TanStack Query</span><span class="chip">HTML5</span><span class="chip">CSS3</span>
+          </div></div>
+          <div class="sk"><div class="sk-h">Bases de Datos</div><div class="chips">
+            <span class="chip">PostgreSQL</span><span class="chip">SQL</span><span class="chip">Modelos relacionales</span>
+          </div></div>
+          <div class="sk"><div class="sk-h">DevOps & Sistemas</div><div class="chips">
+            <span class="chip">Docker</span><span class="chip">Compose</span><span class="chip">Linux</span><span class="chip">Nginx</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VPS</span>
+          </div></div>
+          <div class="sk"><div class="sk-h">Arquitectura & Seguridad</div><div class="chips">
+            <span class="chip">Multi-Tenant</span><span class="chip">RBAC</span><span class="chip">Device Auth</span><span class="chip">API Security</span><span class="chip">Tokens</span>
+          </div></div>
+        </section>
+
+        <section>
+          <h2 class="sec">Idiomas</h2>
+          <div class="lang"><span>Español</span><span class="lv">Nativo</span></div>
+        </section>
+
+        <section>
+          <h2 class="sec">Educación</h2>
+          <div class="edu">Formación autodidacta en desarrollo de software, arquitectura backend, tecnologías web modernas y computación en la nube.</div>
+          <div class="edu">Aprendizaje continuo mediante documentación oficial, proyectos reales y plataformas de formación tecnológica.</div>
+        </section>
+      </div>
+
+      <!-- MAIN -->
+      <div class="main">
+        <section>
+          <h2 class="sec">Perfil profesional</h2>
+          <p class="perfil">Desarrollador de software con experiencia en el diseño, desarrollo y mantenimiento de <b>aplicaciones web, APIs REST y sistemas empresariales</b> con Python, FastAPI, React, PostgreSQL y Docker. He participado en proyectos comerciales para empresas y clientes finales, además de liderar plataformas propias de gestión empresarial y administración remota de dispositivos. Experiencia en arquitectura backend, autenticación, control de acceso, sistemas multiempresa (multi-tenant), despliegue en servidores Linux y soluciones escalables.</p>
+        </section>
+
+        <section>
+          <h2 class="sec">Experiencia profesional</h2>
+          <div class="job">
+            <div class="job-top"><span class="job-role">Backend Developer</span><span class="job-when">Coneys Technologies</span></div>
+            <div class="job-co">Proyectos empresariales para clientes corporativos</div>
+            <ul class="b">
+              <li>Desarrollo de APIs y servicios backend; implementación de lógica de negocio.</li>
+              <li>Mantenimiento, corrección de errores y optimización de rendimiento.</li>
+              <li>Soporte técnico posterior a la entrega y mejoras en componentes frontend.</li>
+            </ul>
+            <div class="client"><b>Cliente final — ASOMAP</b> (Asociación Mocana de Ahorros y Préstamos): desarrollo y mantenimiento de funcionalidades backend, implementación de procesos de negocio, integración de módulos y mejoras evolutivas.</div>
+          </div>
+          <div class="job">
+            <div class="job-top"><span class="job-role">Desarrollador Freelance</span><span class="job-when">2023 — Actualidad</span></div>
+            <div class="job-co">Soluciones web para pequeñas empresas y clientes particulares</div>
+            <ul class="b">
+              <li>Desarrollo de aplicaciones web y mantenimiento correctivo/evolutivo.</li>
+              <li>Configuración y despliegue en servidores Linux; optimización de bases de datos.</li>
+              <li>Integración de servicios externos y nuevas funcionalidades.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="sec">Proyecto destacado</h2>
+          <div class="proj">
+            <div class="proj-top"><span class="proj-name">FactOne</span><span class="proj-kind">POS · SaaS Multiempresa</span></div>
+            <p class="proj-d">Plataforma de gestión empresarial para pymes con arquitectura basada en APIs REST: multi-tenant, usuarios y permisos, inventario y almacenes, ventas y facturación, caja y finanzas, cuentas por cobrar, órdenes de servicio y control de dispositivos autorizados.</p>
+            <div class="proj-stack">Python · FastAPI · PostgreSQL · React · TypeScript · Docker · Linux</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
